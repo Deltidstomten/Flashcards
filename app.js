@@ -62,6 +62,30 @@ function getCollection(id) {
   });
 }
 
+function insertCollection(name, author) {
+  return new Promise((resolve, reject) => {          // return new Promise here <---
+    return db.run(sql.insertCollectionSQL(), [name, author], function (err) { // .run <----
+      if (err) {
+        console.error("DB Error: Insert failed: ", err.message);
+        return reject(err.message);
+      }
+      return resolve(this.lastID); // retunerar id som collection fick
+    });
+  });
+}
+
+function insertCard(collection, front, back) {
+  return new Promise((resolve, reject) => {          // return new Promise here <---
+    return db.run(sql.insertCardSQL(), [collection, front, back], function (err) { // .run <----
+      if (err) {
+        console.error("DB Error: Insert failed: ", err.message);
+        return reject(err.message);
+      }
+      return resolve(this.lastID); // retunerar id som collection fick
+    });
+  });
+}
+
 app.get('/', async (req, res) => {
     let collections = await getCollections()
     console.log(collections)
@@ -80,11 +104,19 @@ app.get('/create', async (req, res) => {
   res.render('create', {})
 })
 
+app.post('/create', async (req, res) => {
+  console.log(req.body)
+  let id = await insertCollection(req.body.name, req.body.author)
+  for (const property in req.body.cards) {
+    insertCard(id, property, req.body.cards[property])
+  }
+  res.sendStatus(200)
+})
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
-
 
 /*
 

@@ -8,12 +8,12 @@ html(lang="en")
     body 
         h1 Flash Cards 4000
         main
-            h2 Collections
+            h2 Samlingar
             section(class="collections")
                 each collection in collections
                     a(href="collection/" + collection.id class="collection")
                         h2=collection.name
                         p=collection.author
             div
-                h2 Create your own collections 
-                    a(href="/create") here
+                h2 Skapa Din Egen Samling 
+                    a(href="/create") Här

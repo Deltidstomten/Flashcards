@@ -7,14 +7,15 @@ html(lang="en")
         script(src="/create.js" defer) 
         title Document
     body
-        h1 Create Your Own Collection
+        h1 Skapa Din Egen Samling
         form(action="" id="form")
-            label(for="title") Title
-            input(type="text", name="title") 
-            label(for="author") Author
-            input(type="text", name="author")
+            label(for="title") Titel
+            input(type="text", name="title" id="title") 
+            label(for="author") Skapare
+            input(type="text", name="author" id="author")
             div(class="card")
-                input(type="text", name="" placeholder="front")
-                input(type="text", name="" placeholder="back")
+                input(type="text", name="" placeholder="framsida")
+                input(type="text", name="" placeholder="baksida")
         
-        button(onclick="addCard()") Add Card
+        button(onclick="addCard()") Lägg Till Kort
+        button(onclick="submit()") Lägg in
