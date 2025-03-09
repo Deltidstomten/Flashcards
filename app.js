@@ -50,6 +50,18 @@ function getCards(id) {
     });
 }
 
+function getCollection(id) {
+  return new Promise((resolve, reject) => {          // return new Promise here <---
+    return db.all(sql.getCollectionById(), [id], function (err, row) { // .run <----
+      if (err) {
+        console.error("DB Error: Insert failed: ", err.message);
+        return reject(err.message);
+      }
+      return resolve(row);
+    });
+  });
+}
+
 app.get('/', async (req, res) => {
     let collections = await getCollections()
     console.log(collections)
@@ -58,8 +70,14 @@ app.get('/', async (req, res) => {
 
 app.get('/collection/:id', async (req, res) => {
     let cards = await getCards(req.params.id)
+    let collection = await getCollection(req.params.id)
     console.log(cards)
-    res.render('collection', {"cards" : cards})
+    console.log(collection)
+    res.render('collection', {"cards" : cards, "collection" : collection[0]})
+})
+
+app.get('/create', async (req, res) => {
+  res.render('create', {})
 })
 
 

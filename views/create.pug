@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/style.css")
+        script(src="/create.js" defer) 
+        title Document
+    body
+        h1 Create Your Own Collection
+        form(action="" id="form")
+            label(for="title") Title
+            input(type="text", name="title") 
+            label(for="author") Author
+            input(type="text", name="author")
+            div(class="card")
+                input(type="text", name="" placeholder="front")
+                input(type="text", name="" placeholder="back")
+        
+        button(onclick="addCard()") Add Card

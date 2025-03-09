@@ -3,17 +3,26 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/collection.css")
         link(rel="stylesheet", href="/style.css")
         script(src="/script.js" defer) 
         title Document
-    body 
-        h1 Flash Cards 4000
+    body
+        header
+            h1 Flash Cards 4000
+
         main
+            h1=collection.name
             div(class="card-holder" id="cardHolder")
                 each card in cards
                     div(class="card hidden")
                         p(class="front")=card.front
                         p(class="back hidden")=card.back
+                        p(class="card-bottom") Klicka här för att vända
+            p(id="count") 1/3
+            div(class="button-holder")
+                button(onclick="backward()") ←
+                button(onclick="forward()") →
+            
             div
-                button(onclick="backward()") Backwards
-                button(onclick="forward()") Forwards
+                p="Created by " + collection.author

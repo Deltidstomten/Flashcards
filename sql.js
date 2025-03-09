@@ -20,6 +20,8 @@ let getAllCollectionsSQL = `SELECT * FROM collection`
 
 let getCardsByCollectionSQL = `SELECT * FROM card WHERE collection_id = ?`
 
+let getCollectionById = `SELECT * FROM collection WHERE id = ?`
+
 
 module.exports.createCollectionSQL = function() {
     return createCollectionSQL;
@@ -45,4 +47,6 @@ module.exports.getCardsByCollectionSQL = function() {
     return getCardsByCollectionSQL;
 }
 
-
+module.exports.getCollectionById = function() {
+    return getCollectionById;
+}
