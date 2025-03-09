@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/style.css")
+        script(src="/script.js" defer) 
+        title Document
+    body 
+        h1 Flash Cards 4000
+        main
+            div(class="card-holder" id="cardHolder")
+                each card in cards
+                    div(class="card hidden")
+                        p(class="front")=card.front
+                        p(class="back hidden")=card.back
+            div
+                button(onclick="backward()") Backwards
+                button(onclick="forward()") Forwards

@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet", href="/style.css")
+    body 
+        h1 Flash Cards 4000
+        main
+            section(class="collections")
+                each collection in collections
+                    a(href="collection/" + collection.id class="collection")
+                        h2=collection.name
+                        p=collection.author
